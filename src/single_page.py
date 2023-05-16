@@ -3,7 +3,9 @@ from webinit_ import initBrowser
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import sys
+import sys;
+import openpyxl;
+import os;
 
 
 def find_element_with_retry(driver, target, url):
@@ -17,22 +19,22 @@ def find_element_with_retry(driver, target, url):
             find_element_with_retry(driver, target, url)
             continue
 
-def single_page(url_array, results, cookie) :
+def single_page(thread_id, url_array, results, cookie) :
     if(len(url_array) < 1) : 
         return
     
-    total_items = []
+    
     driver = initBrowser(True)
     driver.get("https://www.mobilax.fr")
     driver.execute_script("document.cookie='" + cookie + "; path=/; domain=www.mobilax.fr; secure=false; sameSite=Strict;'")
 
     for telephone_index, category_page in enumerate(url_array):
+        print("Thread N°" , thread_id + 1, ":" , telephone_index , "/" , len(url_array))
         try:
-            
+            total_items = []
             # Naviguer vers la page de la catégorie
             driver.get(category_page)
             ##os.system("cls")
-            print(" ---------- " ,telephone_index + 1, " / " , len(url_array)," ---------- ")
             # Attendre que les produits soient chargés
             find_element_with_retry(driver, "a.app-product-tile", category_page)
 
@@ -41,7 +43,7 @@ def single_page(url_array, results, cookie) :
             product_links = [el.get_attribute('href') for el in product_elements]
 
             for produit_index, product_link in enumerate(product_links):
-
+                print("Thread N°" , thread_id + 1, "-" , "produits :", produit_index , "/" , len(product_links))
                 # Naviguer vers la page du produit
                 driver.get(product_link)
                 item = ["",""]
@@ -58,11 +60,23 @@ def single_page(url_array, results, cookie) :
                 
                 item[0] = reference_element_text
                 item[1] = prix_element_text
-                print(produit_index + 1, " / " , len(product_links), " produits")
                 total_items.append(item)
+            file_path = 'output.xlsx'
+            file_exists = os.path.isfile(file_path)
+            if file_exists:
+                workbook = openpyxl.load_workbook(file_path)
+            else:
+                workbook = openpyxl.Workbook()
+
+            worksheet = workbook.active
+            last_row = worksheet.max_row + 1
+            for row_number, row in enumerate(total_items, start=last_row):
+                worksheet.cell(row=row_number, column=1, value=row[0])
+                worksheet.cell(row=row_number, column=2, value=row[1])
+            workbook.save('output.xlsx') 
+
         except:
             print("thread error")
             driver.quit()
             return        
     driver.quit()
-    results.extend(total_items)

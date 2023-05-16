@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from single_page import single_page
 from thread_asking import thread_asking
 from url.mobilax import mobilax_urls
-    
+import os
 
 ## spliting urls into arrays for threading
 
@@ -18,7 +18,8 @@ threads = []
 items = []
 
 
-thread_amount = thread_asking()
+##thread_amount = thread_asking()
+thread_amount = 5
 category_pages = [line.strip() for line in mobilax_urls]
 split_size = len(category_pages) // thread_amount
 remainder = len(category_pages) % thread_amount
@@ -32,32 +33,13 @@ for i in range(thread_amount):
     start += chunk_size
 
 
-
 init_driver = login(initBrowser(True))
 WebDriverWait(init_driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "app-price")))
 cookies = init_driver.execute_script("return document.cookie")
 init_driver.quit()
-for url_array in url_splits :
-    thread = threading.Thread(target=single_page, args=(url_array, items, cookies.split(';')[1]))
+for i, url_array in enumerate(url_splits) :
+    thread = threading.Thread(target=single_page, args=(i, url_array, items, cookies.split(';')[1]))
     threads.append(thread)
     thread.start()
 for thread in threads:
     thread.join()
-
-
-
-
-
-
-
-
-
-## saving ZONE
-workbook = openpyxl.Workbook()
-worksheet = workbook.active
-worksheet.cell(row=1, column=1, value='SKU')
-worksheet.cell(row=1, column=2, value='PRICE')
-for row_number, row in enumerate(items, start=2):
-    worksheet.cell(row=row_number, column=1, value=row[0])
-    worksheet.cell(row=row_number, column=2, value=row[1])
-workbook.save('_output/mobilax.xlsx')
