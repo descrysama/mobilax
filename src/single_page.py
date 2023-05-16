@@ -31,7 +31,6 @@ def single_page(thread_id, url_array, results, cookie) :
     for telephone_index, category_page in enumerate(url_array):
         print("Thread N°" , thread_id + 1, ":" , telephone_index , "/" , len(url_array))
         try:
-            total_items = []
             # Naviguer vers la page de la catégorie
             driver.get(category_page)
             ##os.system("cls")
@@ -60,20 +59,18 @@ def single_page(thread_id, url_array, results, cookie) :
                 
                 item[0] = reference_element_text
                 item[1] = prix_element_text
-                total_items.append(item)
-            file_path = 'output.xlsx'
-            file_exists = os.path.isfile(file_path)
-            if file_exists:
-                workbook = openpyxl.load_workbook(file_path)
-            else:
-                workbook = openpyxl.Workbook()
+                file_path = '/var/www/html/output.xlsx'
+                file_exists = os.path.isfile(file_path)
+                if file_exists:
+                    workbook = openpyxl.load_workbook(file_path)
+                else:
+                    workbook = openpyxl.Workbook()
 
-            worksheet = workbook.active
-            last_row = worksheet.max_row + 1
-            for row_number, row in enumerate(total_items, start=last_row):
-                worksheet.cell(row=row_number, column=1, value=row[0])
-                worksheet.cell(row=row_number, column=2, value=row[1])
-            workbook.save('output.xlsx') 
+                worksheet = workbook.active
+                last_row = worksheet.max_row + 1
+                worksheet.cell(row=last_row, column=1, value=item[0])
+                worksheet.cell(row=last_row, column=2, value=item[1])
+                workbook.save(file_path) 
 
         except:
             print("thread error")

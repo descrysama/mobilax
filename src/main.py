@@ -25,6 +25,15 @@ split_size = len(category_pages) // thread_amount
 remainder = len(category_pages) % thread_amount
 
 
+file_path = '/var/www/html/output.xlsx'
+file_exists = os.path.isfile(file_path)
+
+if file_exists:
+    workbook = openpyxl.load_workbook(file_path)
+    worksheet = workbook.active
+    worksheet.delete_rows(1, worksheet.max_row)
+    workbook.save(file_path)    
+
 start = 0
 for i in range(thread_amount):
     chunk_size = split_size + (1 if i < remainder else 0)
