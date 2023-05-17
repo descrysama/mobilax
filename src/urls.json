@@ -1,20 +1,6 @@
 
 {
     "urls": [
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-5%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-5c%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-5s%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-6%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-6s%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-6-plus%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-6-5%22,%22url_serie%22:%22iphone-6s-plus%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-7%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-7-plus%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-8%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-8-plus%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-x%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-xs%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
-        "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-xr%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0",
         "https://www.mobilax.fr/api?model=product/ProductShop&action=filter&controller=Select&data=%7B%22url_brand%22:%22apple%22,%22url_range%22:%22series-x-8-7%22,%22url_serie%22:%22iphone-xs-max%22,%22url_device%22:%22telephonie%22%7D&limit=100&offset=0"
     ]
 }

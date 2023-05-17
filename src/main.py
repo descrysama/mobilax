@@ -9,7 +9,7 @@ with open('mobilax/src/urls.json', 'r') as file:
 
 urls = json_data['urls']
 
-remove_at_start('/mobilax/src/output.xlsx')
+remove_at_start('./mobilax/src/output.xlsx')
 
 for i, url in enumerate(urls) :
     items_list = []
@@ -22,6 +22,6 @@ for i, url in enumerate(urls) :
             item[0] = str(product['ean13'])
             item[1] = str(product['price']['price']).replace('.', ',')
             items_list.append(item)
-        add_data('output.xlsx', items_list)
+        add_data('./mobilax/src/output.xlsx', items_list)
     else:
         print("url not found mind replacing it here is the index's list: ", i)
