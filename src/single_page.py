@@ -59,7 +59,7 @@ def single_page(thread_id, url_array, results, cookie) :
                 
                 item[0] = reference_element_text
                 item[1] = prix_element_text
-                file_path = '/var/www/html/output.xlsx'
+                file_path = 'mobilax/src/output.xlsx'
                 file_exists = os.path.isfile(file_path)
                 if file_exists:
                     workbook = openpyxl.load_workbook(file_path)

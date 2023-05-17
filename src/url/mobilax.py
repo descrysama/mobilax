@@ -1,3 +1,3 @@
 mobilax_urls = [
-    "https://www.mobilax.fr/marques/apple/telephonie/series-12-11/iphone-11-pro-max?page=3&limit=50"
+    "https://www.mobilax.fr/marques/samsung/telephonie/galaxy-a/galaxy-a82-5g-a826"
 ]

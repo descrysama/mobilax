@@ -25,7 +25,7 @@ split_size = len(category_pages) // thread_amount
 remainder = len(category_pages) % thread_amount
 
 
-file_path = '/var/www/html/output.xlsx'
+file_path = 'mobilax/src/output.xlsx'
 file_exists = os.path.isfile(file_path)
 
 if file_exists:
