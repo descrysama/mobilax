@@ -1,25 +1,21 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import os
-import sys
+import requests
 
-def login(driver) :
-    print("login initialisé...")
-    driver.get("https://www.mobilax.fr/login")
-    email_input = driver.find_element(By.CSS_SELECTOR, "input[type='email']")
-    email_input.send_keys("louis.lantiez4@icloud.com")
+def login():
+    login_url = "https://www.mobilax.fr/api?model=Auth&action=connect&controller=Auth"
+    login_payload = {
+        "email": "louis.lantiez4@icloud.com",
+        "password": "Google59"
+    }
 
-    # Remplissage du mot de passe
-    password_input = driver.find_element(By.CSS_SELECTOR, "input[type='password']")
-    password_input.send_keys("Google59")
+    login_response = requests.post(login_url, data=login_payload)
 
-    # Appui sur le bouton "Se connecter"
-    connect_button = driver.find_element(By.XPATH, "//button[contains(text(), 'Se connecter')]")
-    connect_button.click()
-    wait = WebDriverWait(driver, 10)
-    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".products")))
-    sys.stdout.write("\033[F")
-    sys.stdout.write("\033[K")
-    print("login fait ✅")
-    return driver
+    if login_response.status_code == 200:
+
+        auth_token = login_response.json()
+        token = auth_token['auth'].get('token')
+        
+        return token
+
+    else:
+        # La connexion a échoué
+        print("Échec de la connexion.")
