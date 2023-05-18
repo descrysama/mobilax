@@ -22,6 +22,6 @@ for i, link in enumerate(result[0:], start=0):
             item[0] = str(product['ean13'])
             item[1] = str(product['price']['price']).replace('.', ',')
             items_list.append(item)
-        add_data("./mobilax/src/output.xlsx", items_list)
+        add_data(os.getenv("OUTPUT_PATH"), items_list)
     else:
         print("url not found mind replacing it here is the index's list: ", i)
