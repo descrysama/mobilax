@@ -14,7 +14,7 @@ remove_at_start(os.getenv("OUTPUT_PATH"))
 for i, link in enumerate(result[0:], start=0):
     items_list = []
     print(json.dumps({'MOBILAX': (str(i+1) + " / " + str(len(result)))}))
-    data_response = requests.get(result[0][0], cookies={"token": login()})
+    data_response = requests.get(link[0], cookies={"token": login()})
     if data_response.status_code == 200:
         json_data = data_response.json()
         for product in json_data['products'] :
