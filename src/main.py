@@ -13,7 +13,7 @@ remove_at_start('./mobilax/src/output.xlsx')
 
 for i, url in enumerate(urls) :
     items_list = []
-    print("Mobilax : ", i, " / ", len(urls) )
+    print(json.dumps({'MOBILAX': (str(i+1) + " / " + str(len(urls)))}))
     data_response = requests.get(url, cookies={"token": login()})
     if data_response.status_code == 200:
         json_data = data_response.json()
