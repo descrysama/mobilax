@@ -22,7 +22,7 @@ def add_data(file_path, items):
 
 
 def remove_at_start(file_path):
-    file_exists = os.path.isfile(file_path)
+    file_exists = os.path.isfile(str(file_path))
 
     if file_exists:
         workbook = openpyxl.load_workbook(file_path)
